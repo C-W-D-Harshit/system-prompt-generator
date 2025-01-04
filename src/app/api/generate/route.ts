@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     await req.json();
 
   if (!success && apiKey === "") {
-    return new Response("Rate limit exceeded. Try again next week.", {
+    return new Response("You have used all your free generations.", {
       status: 429,
     });
   }
