@@ -195,10 +195,11 @@ export function SystemPromptGenerator() {
             className="text-center space-y-2"
           >
             <h1 className="text-4xl font-bold tracking-tight text-white">
-              Generate system prompts in real-time
+              AI System Prompt Engineering Made Simple
             </h1>
             <p className="text-lg text-gray-400">
-              Craft powerful system prompts with AI assistance.
+              Create precise, effective AI system prompts with intelligent
+              assistance
             </p>
           </motion.div>
 
