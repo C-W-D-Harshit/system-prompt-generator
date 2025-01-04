@@ -45,8 +45,11 @@ A modern web application that helps users create effective AI system prompts wit
 3. Create a `.env.local` file in the root directory:
 
    ```bash
-   NEXT_PUBLIC_DEFAULT_COUNT=5
    OPENAI_API_KEY=your_openai_api_key_here
+   PRE_SYSTEM_PROMPT='Your pre-system prompt here'
+   SYSTEM_PROMPT='Your system prompt here'
+   UPSTASH_REDIS_REST_URL="https://your-upstash-url.upstash.io"
+   UPSTASH_REDIS_REST_TOKEN="your_upstash_token_here"
    ```
 
 4. Run the development server:
