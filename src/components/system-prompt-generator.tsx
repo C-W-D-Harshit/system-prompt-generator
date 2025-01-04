@@ -334,7 +334,7 @@ export function SystemPromptGenerator() {
             <p className="text-sm text-gray-400">
               100% free and{" "}
               <a
-                href="https://github.com"
+                href="https://github.com/C-W-D-Harshit/system-prompt-generator"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-4 hover:text-gray-300 transition-colors"
@@ -344,7 +344,7 @@ export function SystemPromptGenerator() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/C-W-D-Harshit/system-prompt-generator"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-300 transition-colors"
@@ -353,7 +353,7 @@ export function SystemPromptGenerator() {
                 <span className="sr-only">GitHub</span>
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/cwd_harshit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-300 transition-colors"
