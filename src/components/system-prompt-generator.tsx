@@ -24,9 +24,43 @@ const MAX_FREE_GENERATIONS = 5;
 
 export function SystemPromptGenerator() {
   const [apiKey, setApiKey] = React.useState("");
-  const [usageCount, setUsageCount] = React.useState(0);
-  const [isApiKeyEntered, setIsApiKeyEntered] = React.useState(false); // Added state for API key visibility
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const [remainingGenerations, setRemainingGenerations] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("remainingGenerations");
+      // Initialize with MAX_FREE_GENERATIONS if not set
+      if (!stored) {
+        localStorage.setItem(
+          "remainingGenerations",
+          MAX_FREE_GENERATIONS.toString()
+        );
+        return MAX_FREE_GENERATIONS;
+      }
+      return parseInt(stored);
+    }
+    return MAX_FREE_GENERATIONS;
+  });
+
+  // Add initialization effect
+  React.useEffect(() => {
+    // Ensure localStorage is set on mount
+    if (!localStorage.getItem("remainingGenerations")) {
+      localStorage.setItem(
+        "remainingGenerations",
+        MAX_FREE_GENERATIONS.toString()
+      );
+      setRemainingGenerations(MAX_FREE_GENERATIONS);
+    }
+  }, []);
+
+  const [isApiKeyEntered, setIsApiKeyEntered] = React.useState(false);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+
   const {
     completion,
     input,
@@ -38,6 +72,14 @@ export function SystemPromptGenerator() {
     api: "/api/generate",
     body: {
       apiKey,
+    },
+    onResponse(response) {
+      const remaining = response.headers.get("X-Remaining-Generations");
+      if (remaining) {
+        const count = parseInt(remaining);
+        setRemainingGenerations(count);
+        localStorage.setItem("remainingGenerations", count.toString());
+      }
     },
     onError(error) {
       toast.error(error.message);
@@ -57,7 +99,6 @@ export function SystemPromptGenerator() {
   };
 
   const handleApiKeySubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Added function to handle API key submission
     if (e.key === "Enter" && apiKey.trim()) {
       setIsApiKeyEntered(true);
       toast.success("Open API key added successfully");
@@ -72,6 +113,8 @@ export function SystemPromptGenerator() {
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, [input]);
+
+  if (!mounted) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-black">
@@ -103,17 +146,16 @@ export function SystemPromptGenerator() {
                 <span
                   className={cn(
                     "text-sm font-semibold",
-                    usageCount >= MAX_FREE_GENERATIONS
+                    remainingGenerations <= 0
                       ? "text-red-400"
                       : "text-green-400"
                   )}
                 >
-                  {Math.max(MAX_FREE_GENERATIONS - usageCount, 0)}/
-                  {MAX_FREE_GENERATIONS}
+                  {remainingGenerations}/{MAX_FREE_GENERATIONS}
                 </span>
               </div>
             )}
-            {isApiKeyEntered ? ( // Replaced API key input section
+            {isApiKeyEntered ? (
               <div className="flex items-center gap-2">
                 <div className="h-9 px-3 flex items-center bg-green-900/20 border border-green-500/50 rounded-md">
                   <span className="text-green-400 text-sm">
@@ -160,7 +202,7 @@ export function SystemPromptGenerator() {
             </p>
           </motion.div>
 
-          {usageCount >= MAX_FREE_GENERATIONS && !apiKey && (
+          {remainingGenerations <= 0 && !apiKey && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -208,13 +250,12 @@ export function SystemPromptGenerator() {
                   disabled={
                     !input ||
                     isLoading ||
-                    (usageCount >= MAX_FREE_GENERATIONS && !apiKey)
+                    (remainingGenerations <= 0 && !apiKey)
                   }
                   className={cn(
                     "h-9 px-4 bg-yellow-500 text-black hover:bg-yellow-400",
                     "transition-all duration-200",
-                    (isLoading ||
-                      (usageCount >= MAX_FREE_GENERATIONS && !apiKey)) &&
+                    (isLoading || (remainingGenerations <= 0 && !apiKey)) &&
                       "opacity-50 cursor-not-allowed"
                   )}
                   effect={"shine"}
@@ -263,13 +304,12 @@ export function SystemPromptGenerator() {
                     effect={"ringHover"}
                     size="icon"
                     className="size-7 items-center justify-center flex"
-                    disabled={usageCount >= MAX_FREE_GENERATIONS && !apiKey}
+                    disabled={remainingGenerations <= 0 && !apiKey}
                     title="Regenerate"
                   >
                     <RefreshCw className="w-4 h-4" />
                   </Button>
                   <Button
-                    // onClick={() => setPrompt(generatedPrompt)}
                     variant="secondary"
                     effect={"ringHover"}
                     size="sm"

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     req.headers.get("x-real-ip") ||
     "127.0.0.1";
 
-  const { success } = await ratelimit.limit(ip);
+  const { success, remaining } = await ratelimit.limit(ip + "1");
 
   const { prompt, apiKey }: { prompt: string; apiKey: string } =
     await req.json();
@@ -55,5 +55,14 @@ export async function POST(req: Request) {
     system: process.env.SYSTEM_PROMPT,
   });
 
-  return result.toDataStreamResponse();
+  const stream = result.toDataStreamResponse();
+
+  return new Response(stream.body, {
+    headers: {
+      ...stream.headers,
+      "X-Remaining-Generations": remaining.toString(),
+    },
+    status: stream.status,
+    statusText: stream.statusText,
+  });
 }

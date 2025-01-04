@@ -53,6 +53,9 @@ importers:
       framer-motion:
         specifier: ^11.15.0
         version: 11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      js-cookie:
+        specifier: ^3.0.5
+        version: 3.0.5
       lucide-react:
         specifier: ^0.244.0
         version: 0.244.0(react@19.0.0)
@@ -99,6 +102,9 @@ importers:
       '@types/file-saver':
         specifier: ^2.0.5
         version: 2.0.7
+      '@types/js-cookie':
+        specifier: ^3.0.6
+        version: 3.0.6
 
 packages:
 
@@ -538,6 +544,9 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
+  '@types/js-cookie@3.0.6':
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
@@ -962,6 +971,10 @@ packages:
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
+
+  js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
 
   json-schema@0.4.0:
     resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
@@ -1961,6 +1974,8 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
+  '@types/js-cookie@3.0.6': {}
+
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -2361,6 +2376,8 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.7: {}
+
+  js-cookie@3.0.5: {}
 
   json-schema@0.4.0: {}
 
