@@ -1,5 +1,7 @@
 # System Prompt Generator
 
+![OG Image](https://www.systemprompt.pro/og.png)
+
 A modern web application that helps users create effective AI system prompts with intelligent assistance. Built with Next.js and OpenAI.
 
 ## Features
