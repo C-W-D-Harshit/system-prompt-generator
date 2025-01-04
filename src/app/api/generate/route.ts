@@ -47,9 +47,15 @@ export async function POST(req: Request) {
     system: process.env.PRE_SYSTEM_PROMPT,
   });
 
-  const result = streamText({
+  const result1 = await generateText({
     model: openai("gpt-4-turbo"),
     prompt: `Make this system prompt better: ${initialResult.text}. Stricter guidelines, more examples, and clearer instructions are always better.`,
+    system: process.env.SYSTEM_PROMPT,
+  });
+
+  const result = streamText({
+    model: openai("gpt-4o"),
+    prompt: `Make this system prompt better: ${result1.text}. Stricter guidelines, more examples, and clearer instructions are always better.`,
     system: process.env.SYSTEM_PROMPT,
   });
 
