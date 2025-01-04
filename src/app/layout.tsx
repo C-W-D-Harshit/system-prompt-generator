@@ -16,8 +16,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://systemprompt.pro/og.png",
-        width: 1200,
-        height: 630,
       },
     ],
     locale: "en_US",
