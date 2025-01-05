@@ -155,7 +155,7 @@ export function SystemPromptGenerator() {
           >
             {!isApiKeyEntered && (
               <div className="flex items-center gap-2 text-gray-400">
-                <span className="text-sm">Free generations:</span>
+                <span className="text-xs lg:text-sm">Free generations:</span>
                 <span
                   className={cn(
                     "text-sm font-semibold",
