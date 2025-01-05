@@ -14,6 +14,7 @@ import {
   AlertCircle,
   ChevronDown,
   KeyIcon,
+  Loader, // Add this import
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -116,6 +117,15 @@ export function SystemPromptGenerator() {
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, [input]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+      if (input && !isLoading && (remainingGenerations > 0 || apiKey)) {
+        handleSubmit(e);
+      }
+    }
+  };
 
   if (!mounted) return null;
 
@@ -270,6 +280,7 @@ export function SystemPromptGenerator() {
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
+                onKeyDown={handleKeyDown}
                 placeholder={"Generate a system prompt..."}
                 className={cn(
                   "min-h-[200px] w-full resize-none bg-gray-800 border-gray-700",
@@ -297,7 +308,7 @@ export function SystemPromptGenerator() {
                 >
                   {isLoading ? (
                     <>
-                      <Zap className="w-4 h-4 mr-2 animate-pulse" />
+                      <Loader className="w-4 h-4 mr-2 animate-spin" />
                       Generating...
                     </>
                   ) : (

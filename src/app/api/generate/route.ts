@@ -41,9 +41,17 @@ export async function POST(req: Request) {
     apiKey: apiKey !== "" ? apiKey : process.env.OPENAI_API_KEY,
   });
 
-  const initialResult = await generateText({
+  const promptPro = await generateText({
     model: openai("gpt-4o-mini"),
     prompt,
+    system: process.env.PROMPT_PRO,
+  });
+
+  console.log(promptPro.text);
+
+  const initialResult = await generateText({
+    model: openai("gpt-4o-mini"),
+    prompt: promptPro.text,
     system: process.env.PRE_SYSTEM_PROMPT,
   });
 
