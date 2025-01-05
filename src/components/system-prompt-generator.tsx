@@ -154,14 +154,14 @@ export function SystemPromptGenerator() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-4"
+            className="flex items-center gap-2 lg:gap-4"
           >
             {!isApiKeyEntered && (
-              <div className="flex items-center gap-2 text-gray-400">
+              <div className="flex items-center gap-1 lg:gap-2 text-gray-400">
                 <span className="text-xs lg:text-sm">Free generations:</span>
                 <span
                   className={cn(
-                    "text-sm font-semibold",
+                    "text-xs lg:text-sm font-semibold",
                     remainingGenerations <= 0
                       ? "text-red-400"
                       : "text-green-400"
