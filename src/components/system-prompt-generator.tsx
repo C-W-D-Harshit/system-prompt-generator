@@ -12,6 +12,8 @@ import {
   Copy,
   RefreshCw,
   AlertCircle,
+  ChevronDown,
+  KeyIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -25,6 +27,7 @@ const MAX_FREE_GENERATIONS = 5;
 export function SystemPromptGenerator() {
   const [apiKey, setApiKey] = React.useState("");
   const [mounted, setMounted] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
@@ -157,10 +160,13 @@ export function SystemPromptGenerator() {
             )}
             {isApiKeyEntered ? (
               <div className="flex items-center gap-2">
-                <div className="h-9 px-3 flex items-center bg-green-900/20 border border-green-500/50 rounded-md">
+                <div className="h-9 px-3 hidden lg:flex items-center bg-green-900/20 border border-green-500/50 rounded-md">
                   <span className="text-green-400 text-sm">
                     API Key added ✓
                   </span>
+                </div>
+                <div className="h-9 px-3 lg:hidden flex items-center bg-green-900/20 border border-green-500/50 rounded-md">
+                  <span className="text-green-400 text-sm">API ✓</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -172,14 +178,42 @@ export function SystemPromptGenerator() {
                 </Button>
               </div>
             ) : (
-              <Input
-                type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                onKeyDown={handleApiKeySubmit}
-                className="w-[300px] h-9 bg-gray-800 border-gray-700 text-gray-200 placeholder:text-gray-500 hidden lg:flex"
-                placeholder="[Optional] Add your Openai API Key"
-              />
+              <>
+                <Input
+                  type="password"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  onKeyDown={handleApiKeySubmit}
+                  className="w-[300px] h-9 bg-gray-800 border-gray-700 text-gray-200 placeholder:text-gray-500 hidden lg:flex"
+                  placeholder="[Optional] Add your Openai API Key"
+                />
+                <div className="relative lg:hidden">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="w-7 h-7"
+                    effect={"shine"}
+                  >
+                    <KeyIcon className="w-4 h-4" />
+                  </Button>
+                  {isMobileMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-[280px] bg-gray-800 border border-gray-700 rounded-md shadow-lg p-2">
+                      <Input
+                        type="password"
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                        onKeyDown={(e) => {
+                          handleApiKeySubmit(e);
+                          if (e.key === "Enter") setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full h-9 bg-gray-700 border-gray-600 text-gray-200 placeholder:text-gray-500"
+                        placeholder="Enter your OpenAI API Key"
+                      />
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </motion.div>
         </div>
