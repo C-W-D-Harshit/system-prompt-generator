@@ -25,6 +25,30 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://systemprompt.pro"),
   creator: "https://x.com/cwd_harshit",
   applicationName: "System Prompt Generator",
+  keywords: [
+    "system prompt generator",
+    "ai prompt generator",
+    "chatgpt system prompt",
+    "gpt system prompt",
+    "ai system messages",
+    "prompt engineering",
+    "custom ai instructions",
+    "system",
+    "prompt",
+    "generator",
+    "ai",
+    "gpt-3",
+    "openai",
+    "llm prompts",
+    "ai assistant prompts",
+  ],
+  authors: [
+    {
+      name: "Harshit Sharma",
+      url: "https://x.com/cwd_harshit",
+    },
+  ],
+  robots: "index, follow",
 };
 
 export default function RootLayout({
