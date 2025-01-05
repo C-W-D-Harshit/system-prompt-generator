@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { useCompletion } from "ai/react";
 import { MemoizedMarkdown } from "./MemoizedMarkdown";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const MAX_FREE_GENERATIONS = 5;
 
@@ -64,6 +65,7 @@ export function SystemPromptGenerator() {
 
   const [isApiKeyEntered, setIsApiKeyEntered] = React.useState(false);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const isMobile = useIsMobile();
 
   const {
     completion,
@@ -119,6 +121,7 @@ export function SystemPromptGenerator() {
   }, [input]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (isMobile) return;
     if (e.key === "Enter" && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
       if (input && !isLoading && (remainingGenerations > 0 || apiKey)) {
