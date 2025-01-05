@@ -9,11 +9,45 @@ A modern web application that helps users create effective AI system prompts wit
 - 🚀 Intelligent system prompt generation
 - 🎨 Beautiful, responsive UI with dark mode
 - ✨ Real-time prompt generation
+- ⌨️ Smart keyboard shortcuts:
+  - Enter to submit
+  - Shift+Enter for new line
+  - Ctrl/Cmd+Enter for new line
+- 🔄 Loading state animations
 - 🔑 OpenAI API key integration
 - 💯 Free tier with 5 generations
 - 📋 One-click copy to clipboard
 - 🔄 Regeneration capability
 - 📱 Mobile-friendly design
+
+## How It Works
+
+The system uses a multi-step generation process to create highly effective system prompts:
+
+1. **Initial Enhancement**
+
+   - Takes your input prompt
+   - Uses GPT-4 to enhance and structure it professionally
+   - Adds missing context and improves clarity
+
+2. **Three-Step Refinement**
+
+   - Step 1: Converts the enhanced prompt into a system prompt format
+   - Step 2: Adds stricter guidelines and specific examples
+   - Step 3: Final optimization with additional safety measures and clear instructions
+
+3. **Final Output**
+   - Delivers a production-ready system prompt
+   - Includes proper formatting and structure
+   - Ensures compatibility with various AI models
+
+This iterative process ensures each generated prompt is:
+
+- Well-structured
+- Comprehensive
+- Clear and concise
+- Safe and controlled
+- Ready for immediate use
 
 ## Tech Stack
 
