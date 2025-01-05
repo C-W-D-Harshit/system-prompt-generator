@@ -4,6 +4,7 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import Balancer from "react-wrap-balancer";
 import {
   Github,
   Twitter,
@@ -242,11 +243,13 @@ export function SystemPromptGenerator() {
             className="text-center space-y-2"
           >
             <h1 className="text-4xl font-bold tracking-tight text-white">
-              AI System Prompt Engineering Made Simple
+              <Balancer>AI System Prompt Engineering Made Simple</Balancer>
             </h1>
             <p className="text-lg text-gray-400">
-              Create precise, effective AI system prompts with intelligent
-              assistance
+              <Balancer>
+                Create precise, effective AI system prompts with intelligent
+                assistance
+              </Balancer>
             </p>
           </motion.div>
 
