@@ -24,6 +24,7 @@ import { useCompletion } from "ai/react";
 import { MemoizedMarkdown } from "./MemoizedMarkdown";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { TextShimmer } from "./ui/text-shimmer";
 
 const MAX_FREE_GENERATIONS = 5;
 
@@ -308,14 +309,16 @@ export function SystemPromptGenerator() {
                     "h-9 px-4 bg-yellow-500 text-black hover:bg-yellow-400",
                     "transition-all duration-200",
                     (isLoading || (remainingGenerations <= 0 && !apiKey)) &&
-                      "opacity-50 cursor-not-allowed"
+                      "cursor-not-allowed"
                   )}
                   effect={"shine"}
                 >
                   {isLoading ? (
                     <>
                       <Loader className="w-4 h-4 mr-2 animate-spin" />
-                      Generating...
+                      <TextShimmer className="text-black">
+                        Generating...
+                      </TextShimmer>
                     </>
                   ) : (
                     <>
