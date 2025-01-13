@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { Suspense } from "react";
+import { CSPostHogProvider } from "@/components/providers/PosthogProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,9 +61,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <Toaster />
-        <Analytics />
+        <Suspense>
+          <CSPostHogProvider>
+            {children}
+            <Toaster />
+            <Analytics />
+          </CSPostHogProvider>
+        </Suspense>
       </body>
     </html>
   );
