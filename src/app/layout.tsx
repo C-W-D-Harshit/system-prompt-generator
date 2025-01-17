@@ -50,7 +50,6 @@ export const metadata: Metadata = {
       url: "https://x.com/cwd_harshit",
     },
   ],
-  robots: "index, follow",
 };
 
 export default function RootLayout({
