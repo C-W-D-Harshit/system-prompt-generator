@@ -25,6 +25,7 @@ import { MemoizedMarkdown } from "./MemoizedMarkdown";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { TextShimmer } from "./ui/text-shimmer";
+import Image from "next/image";
 
 const MAX_FREE_GENERATIONS = 5;
 
@@ -237,6 +238,44 @@ export function SystemPromptGenerator() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-16">
         <div className="w-full max-w-3xl mx-auto space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center justify-center gap-6 flex-col lg:flex-row"
+          >
+            {/* <Link
+              href="https://www.producthunt.com/posts/system-prompt-generator?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-system&#0045;prompt&#0045;generator"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=791218&theme=light&t=1737099388041"
+                alt="System Prompt Generator - AI System Prompt Engineering Made Simple | Product Hunt"
+                width={220}
+                height={54}
+                priority
+              />
+            </Link> */}
+
+            <Link
+              href="https://peerlist.io/cwdharshit/project/system-prompt-generator"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/peerlist.svg"
+                alt="System Prompt Generator - AI System Prompt Engineering Made Simple | Product Hunt"
+                width={250}
+                height={54}
+                style={{
+                  width: "250px",
+                  height: "54px",
+                }}
+                priority
+              />
+            </Link>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
