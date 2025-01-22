@@ -103,7 +103,7 @@ export function SystemPromptGenerator() {
               href="https://www.buymeacoffee.com/cwd.harshit"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors"
+              className="flex items-center gap-2 text-yellow-600 hover:text-yellow-500 transition-colors"
             >
               <Coffee className="h-4 w-4" />
               <span>Buying me a coffee ☕</span>
