@@ -10,10 +10,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "System Prompt Generator",
-  description: "Generate system prompts in real-time with AI",
+  description:
+    "Create precise, effective AI system prompts with intelligent assistance",
   openGraph: {
     title: "System Prompt Generator",
-    description: "Generate system prompts in real-time with AI",
+    description:
+      "Create precise, effective AI system prompts with intelligent assistance",
     url: "https://systemprompt.pro",
     siteName: "System Prompt Generator",
     images: [
