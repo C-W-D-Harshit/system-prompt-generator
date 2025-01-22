@@ -47,8 +47,6 @@ export async function POST(req: Request) {
     system: process.env.PROMPT_PRO,
   });
 
-  console.log(promptPro.text);
-
   const initialResult = await generateText({
     model: openai("gpt-4o-mini"),
     prompt: promptPro.text,

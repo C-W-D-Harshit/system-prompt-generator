@@ -328,6 +328,7 @@ export function SystemPromptGenerator() {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={"Generate a system prompt..."}
+                disabled={isLoading}
                 className={cn(
                   "min-h-[200px] w-full resize-none bg-gray-800 border-gray-700",
                   "text-gray-200 placeholder:text-gray-500",
