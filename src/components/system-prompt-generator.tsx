@@ -15,7 +15,8 @@ import {
   AlertCircle,
   ChevronDown,
   KeyIcon,
-  Loader, // Add this import
+  Loader,
+  Coffee, // Add this import
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -94,7 +95,23 @@ export function SystemPromptGenerator() {
       toast.error(error.message);
     },
     onFinish(prompt, completion) {
-      toast.success("System prompt generated successfully!");
+      toast.success("System prompt generated successfully!", {
+        description: (
+          <div className="flex flex-col gap-2">
+            <p>If you found this helpful, consider</p>
+            <Link
+              href="https://www.buymeacoffee.com/cwd.harshit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors"
+            >
+              <Coffee className="h-4 w-4" />
+              <span>Buying me a coffee ☕</span>
+            </Link>
+          </div>
+        ),
+        duration: 5000,
+      });
     },
   });
 
@@ -454,6 +471,15 @@ export function SystemPromptGenerator() {
               >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
+              </a>
+              <a
+                href="https://www.buymeacoffee.com/cwd.harshit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gray-300 transition-colors"
+              >
+                <Coffee className="h-5 w-5" />
+                <span className="sr-only">Buy me a coffee</span>
               </a>
             </div>
           </div>
