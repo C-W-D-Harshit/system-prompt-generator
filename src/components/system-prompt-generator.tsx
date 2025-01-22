@@ -476,7 +476,7 @@ export function SystemPromptGenerator() {
                 href="https://www.buymeacoffee.com/cwd.harshit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-300 transition-colors"
+                className="text-yellow-600 hover:text-yellow-500 transition-colors"
               >
                 <Coffee className="h-5 w-5" />
                 <span className="sr-only">Buy me a coffee</span>
