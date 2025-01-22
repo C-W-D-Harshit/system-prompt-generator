@@ -28,21 +28,47 @@ export const metadata: Metadata = {
   creator: "https://x.com/cwd_harshit",
   applicationName: "System Prompt Generator",
   keywords: [
+    // Core functionality keywords
     "system prompt generator",
-    "ai prompt generator",
-    "chatgpt system prompt",
-    "gpt system prompt",
-    "ai system messages",
+    "AI system prompt creator",
+    "custom system prompt builder",
+    "ChatGPT system message generator",
+    "LLM system prompt maker",
+
+    // Use cases and applications
+    "AI personality customization",
+    "ChatGPT behavior control",
+    "AI assistant configuration",
+    "custom AI instructions generator",
+    "AI role definition tool",
+
+    // Technical and specific terms
+    "prompt engineering tool",
+    "GPT system message template",
+    "AI behavior prompting",
+    "LLM instruction generator",
+    "AI context setting",
+
+    // Related concepts
+    "AI personality designer",
+    "ChatGPT instruction maker",
+    "AI assistant customization",
+    "GPT behavior modifier",
+    "custom AI personality",
+
+    // Platform specific
+    "ChatGPT system prompts",
+    "GPT-4 system messages",
+    "Claude system prompts",
+    "LLaMA instruction format",
+    "OpenAI system messages",
+
+    // Generic but relevant
     "prompt engineering",
-    "custom ai instructions",
-    "system",
-    "prompt",
-    "generator",
-    "ai",
-    "gpt-3",
-    "openai",
-    "llm prompts",
-    "ai assistant prompts",
+    "AI customization",
+    "LLM configuration",
+    "AI instruction design",
+    "system prompts",
   ],
   authors: [
     {
