@@ -28,7 +28,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { TextShimmer } from "./ui/text-shimmer";
 import Image from "next/image";
 
-const MAX_FREE_GENERATIONS = 5;
+const MAX_FREE_GENERATIONS = 3;
 
 export function SystemPromptGenerator() {
   const [apiKey, setApiKey] = React.useState("");

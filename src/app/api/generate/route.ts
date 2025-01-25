@@ -6,7 +6,7 @@ import { Redis } from "@upstash/redis";
 // Create a new ratelimiter, that allows 5 requests per week
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(5, "7 d"),
+  limiter: Ratelimit.slidingWindow(3, "7 d"),
   analytics: true,
   /**
    * Optional prefix for the keys used in redis. This is useful if you want to share a redis
@@ -53,11 +53,14 @@ export async function POST(req: Request) {
     system: process.env.PRE_SYSTEM_PROMPT,
   });
 
-  const result1 = await generateText({
-    model: openai("gpt-4-turbo"),
-    prompt: `Make this system prompt better: ${initialResult.text}. Stricter guidelines, more examples, and clearer instructions are always better.`,
-    system: process.env.SYSTEM_PROMPT,
-  });
+  const result1 =
+    apiKey !== ""
+      ? await generateText({
+          model: openai("gpt-4-turbo"),
+          prompt: `Make this system prompt better: ${initialResult.text}. Stricter guidelines, more examples, and clearer instructions are always better.`,
+          system: process.env.SYSTEM_PROMPT,
+        })
+      : initialResult;
 
   const result = streamText({
     model: openai("gpt-4o"),
