@@ -218,7 +218,11 @@ export function SystemPromptGenerator() {
                   onChange={(e) => setApiKey(e.target.value)}
                   onKeyDown={handleApiKeySubmit}
                   className="w-[300px] h-9 bg-gray-800 border-gray-700 text-gray-200 placeholder:text-gray-500 hidden lg:flex"
-                  placeholder="[Optional] Add your Openai API Key"
+                  placeholder={
+                    remainingGenerations <= 0
+                      ? "Add your Openai API Key"
+                      : "[Optional] Add your Openai API Key"
+                  }
                 />
                 <div className="relative lg:hidden">
                   <Button
