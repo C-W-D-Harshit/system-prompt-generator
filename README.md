@@ -15,7 +15,7 @@ A modern web application that helps users create effective AI system prompts wit
   - Ctrl/Cmd+Enter for new line
 - 🔄 Loading state animations
 - 🔑 OpenAI API key integration
-- 💯 Free tier with 5 generations
+- 💯 Free tier with 3 generations
 - 📋 One-click copy to clipboard
 - 🔄 Regeneration capability
 - 📱 Mobile-friendly design
