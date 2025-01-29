@@ -348,7 +348,7 @@ export function SystemPromptGenerator() {
                   handleInputChange(e);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder={"Generate a system prompt..."}
+                placeholder={"Generate a system prompt for your AI..."}
                 disabled={isLoading}
                 className={cn(
                   "min-h-[200px] w-full resize-none bg-gray-800 border-gray-700",
